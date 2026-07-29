@@ -1,39 +1,149 @@
 <section class="hero">
 
-
-<h1>
-Yoyo
-</h1>
+    <div class="hero-content">
 
 
-<h2>
-AI Researcher
-<br>
-&
-<br>
-Life Explorer
-</h2>
+        <!-- 左侧文字 -->
+        <div class="intro">
 
 
-<p>
-Exploring Artificial Intelligence,
-Biomedical Science and Life.
-</p>
+            <div class="tags">
+
+                <span>
+                    🧠 Medical AI
+                </span>
+
+                <span>
+                    🔬 Deep Learning
+                </span>
+
+                <span>
+                    🌱 Life Explorer
+                </span>
+
+            </div>
 
 
-<div>
-
-<button>
-Explore
-</button>
+            <h1>
+                Yoyo
+            </h1>
 
 
-<button class="second">
-About Me
-</button>
+            <h2>
+                AI Researcher
+                <br>
+                <span>
+                    Medical Imaging × Artificial Intelligence
+                </span>
+            </h2>
 
 
-</div>
+            <p>
+
+                Exploring the intersection of
+                artificial intelligence,
+                biomedical science and human life.
+
+            </p>
+
+
+
+            <div class="buttons">
+
+                <a href="/research">
+                    Explore Research
+                </a>
+
+
+                <a class="secondary"
+                   href="/resume">
+
+                    My Resume
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- 右侧个人卡片 -->
+
+        <div class="profile-card">
+
+
+            <div class="avatar">
+
+                🌱
+
+            </div>
+
+
+            <h3>
+                Yoyo
+            </h3>
+
+
+            <p>
+                Building intelligent systems
+                for healthcare.
+            </p>
+
+
+            <div class="info">
+
+
+                <div>
+
+                    <strong>
+                        Research
+                    </strong>
+
+                    <span>
+                        Medical AI
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <strong>
+                        Focus
+                    </strong>
+
+                    <span>
+                        MRI Analysis
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <strong>
+                        Vision
+                    </strong>
+
+                    <span>
+                        AI × Life
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
 
 
 </section>
@@ -42,103 +152,522 @@ About Me
 
 <style>
 
-.hero{
 
-height:
-100vh;
+.hero {
 
 
-display:
-flex;
+min-height:100vh;
 
-flex-direction:
-column;
 
-justify-content:center;
+display:flex;
 
 align-items:center;
 
 
-text-align:center;
+padding:
+
+120px 10% 60px;
 
 
 background-image:
 
+
 linear-gradient(
-rgba(255,255,255,.45),
-rgba(255,255,255,.7)
+
+90deg,
+
+rgba(255,255,255,0.85),
+
+rgba(255,255,255,0.35)
+
 ),
+
 
 url("/images/home-bg.jpg");
 
 
-background-size:
-cover;
+
+background-size:cover;
 
 
 background-position:center;
 
 
+
 }
+
+
+
+.hero-content {
+
+
+width:100%;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+align-items:center;
+
+
+gap:80px;
+
+
+
+}
+
+
+
+
+.intro {
+
+
+max-width:650px;
+
+
+animation:
+fadeIn 1s ease;
+
+
+}
+
+
+
+.tags {
+
+
+display:flex;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+margin-bottom:30px;
+
+
+}
+
+
+.tags span {
+
+
+padding:
+
+8px 18px;
+
+
+border-radius:30px;
+
+
+background:
+
+rgba(255,255,255,0.6);
+
+
+backdrop-filter:
+
+blur(10px);
+
+
+font-size:14px;
+
+
+}
+
+
+
+
+h1 {
+
+
+font-size:
+
+96px;
+
+
+line-height:
+
+1;
+
+
+margin:
+
+0 0 20px;
+
+
+font-weight:
+
+700;
+
+
+color:#444;
+
+
+}
+
+
+
+h2 {
+
+
+font-size:
+
+32px;
+
+
+font-weight:
+
+400;
+
+
+line-height:
+
+1.4;
+
+
+}
+
+
+h2 span {
+
+
+font-size:
+
+24px;
+
+
+color:
+
+#777;
+
+
+}
+
+
+
+
+.intro p {
+
+
+font-size:
+
+20px;
+
+
+line-height:
+
+1.8;
+
+
+color:#666;
+
+
+}
+
+
+
+.buttons {
+
+
+margin-top:
+
+40px;
+
+
+display:flex;
+
+
+gap:20px;
+
+
+}
+
+
+
+.buttons a {
+
+
+padding:
+
+15px 35px;
+
+
+border-radius:
+
+40px;
+
+
+text-decoration:none;
+
+
+background:
+
+#FFD6E8;
+
+
+color:#555;
+
+
+transition:
+
+0.3s;
+
+
+}
+
+
+
+.buttons a:hover {
+
+
+transform:
+
+translateY(-5px);
+
+
+}
+
+
+
+.buttons .secondary {
+
+
+background:
+
+white;
+
+
+}
+
+
+
+
+.profile-card {
+
+
+width:
+
+330px;
+
+
+padding:
+
+35px;
+
+
+border-radius:
+
+35px;
+
+
+background:
+
+rgba(255,255,255,0.45);
+
+
+backdrop-filter:
+
+blur(20px);
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,0.1);
+
+
+animation:
+
+float 4s ease-in-out infinite;
+
+
+}
+
+
+
+.avatar {
+
+
+font-size:
+
+60px;
+
+
+}
+
+
+
+.profile-card h3 {
+
+
+font-size:
+
+32px;
+
+
+margin:
+
+10px 0;
+
+
+}
+
+
+
+.profile-card p {
+
+
+color:#666;
+
+
+line-height:
+
+1.6;
+
+
+}
+
+
+
+
+.info {
+
+
+margin-top:
+
+30px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:18px;
+
+
+}
+
+
+
+.info div {
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+padding-bottom:
+
+12px;
+
+
+border-bottom:
+
+1px solid rgba(0,0,0,0.1);
+
+
+}
+
+
+
+.info span {
+
+
+color:#888;
+
+
+}
+
+
+
+
+@keyframes float {
+
+
+0%,100%{
+
+transform:
+
+translateY(0);
+
+}
+
+
+50%{
+
+transform:
+
+translateY(-15px);
+
+}
+
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+from{
+
+
+opacity:0;
+
+
+transform:
+
+translateX(-30px);
+
+
+}
+
+
+to{
+
+
+opacity:1;
+
+
+transform:
+
+translateX(0);
+
+
+}
+
+
+}
+
+
+
+@media(max-width:900px){
+
+
+.hero-content{
+
+
+flex-direction:column;
+
+
+}
+
 
 
 h1{
 
-font-size:
-80px;
-
-margin:0;
+font-size:70px;
 
 }
 
 
-h2{
-
-font-size:
-30px;
-
-font-weight:
-400;
-
 }
 
-
-p{
-
-font-size:
-20px;
-
-}
-
-
-button{
-
-padding:
-15px 40px;
-
-border-radius:
-30px;
-
-border:none;
-
-background:
-#FFD6E8;
-
-
-font-size:
-18px;
-
-}
-
-
-.second{
-
-background:
-white;
-
-margin-left:
-20px;
-
-}
 
 </style>
