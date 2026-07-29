@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+
+:root {
+
+    --bg-main: #FFF9F5;
+
+    --pink:
+    #FFD6E8;
+
+    --mint:
+    #D8F3DC;
+
+    --blue:
+    #D6ECFF;
+
+    --yellow:
+    #FFF1C9;
+
+    --lavender:
+    #E8D9FF;
+
+    --text:
+    #555555;
+}
+
+
+body {
+
+    margin:0;
+
+    background:
+    var(--bg-main);
+
+    color:
+    var(--text);
+
+    font-family:
+    Inter,
+    "PingFang SC",
+    sans-serif;
+
+}
