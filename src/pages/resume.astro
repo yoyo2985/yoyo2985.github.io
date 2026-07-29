@@ -1,0 +1,575 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+---
+
+
+<MainLayout title="Yoyo | Resume">
+
+
+<Navbar />
+
+
+<section class="resume">
+
+
+<div class="header">
+
+
+<h1>
+Yoyo
+</h1>
+
+
+<h2>
+AI Researcher
+</h2>
+
+
+<p>
+Medical Imaging × Deep Learning × Artificial Intelligence
+</p>
+
+
+<a 
+class="download"
+href="/resume/Yoyo_CV.pdf"
+download>
+
+📄 Download CV
+
+</a>
+
+
+</div>
+
+
+
+<section class="card">
+
+<h2>
+About Me
+</h2>
+
+
+<p>
+
+I am an AI researcher interested in
+medical imaging,
+deep learning and intelligent healthcare systems.
+
+My current research focuses on
+MRI-based disease prediction
+and multimodal artificial intelligence.
+
+</p>
+
+</section>
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+Education
+</h2>
+
+
+<div class="item">
+
+<h3>
+Bachelor Degree
+</h3>
+
+
+<p>
+University Name
+<br>
+Major: XXXXX
+<br>
+20XX - Present
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+Research Experience
+</h2>
+
+
+
+<div class="item">
+
+
+<h3>
+Medical Imaging AI Research
+</h3>
+
+
+<p>
+
+Developing deep learning models for
+MRI analysis and disease prediction.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="item">
+
+
+<h3>
+Multimodal AI System
+</h3>
+
+
+<p>
+
+Exploring vision-language models
+for biomedical applications.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+Projects
+</h2>
+
+
+
+<div class="project">
+
+
+<h3>
+Lung Cancer Leptomeningeal Metastasis Prediction
+</h3>
+
+
+<p>
+
+MRI based binary classification model
+using deep learning architectures.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="project">
+
+
+<h3>
+Personal AI Research Assistant
+</h3>
+
+
+<p>
+
+An intelligent assistant integrated
+with my research workflow.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+Skills
+</h2>
+
+
+<div class="skills">
+
+
+<span>
+Python
+</span>
+
+
+<span>
+PyTorch
+</span>
+
+
+<span>
+Deep Learning
+</span>
+
+
+<span>
+Medical Imaging
+</span>
+
+
+<span>
+Transformer
+</span>
+
+
+<span>
+Computer Vision
+</span>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section class="card">
+
+
+<h2>
+Contact
+</h2>
+
+
+<p>
+
+Email:
+your-email@example.com
+
+</p>
+
+
+<p>
+
+GitHub:
+github.com/yoyo2985
+
+</p>
+
+
+</section>
+
+
+
+</section>
+
+
+</MainLayout>
+
+
+
+
+
+<style>
+
+
+.resume{
+
+
+padding:
+
+140px 10% 80px;
+
+
+background:
+
+#FFF9F5;
+
+
+}
+
+
+
+.header{
+
+
+text-align:center;
+
+
+margin-bottom:
+
+80px;
+
+
+}
+
+
+
+.header h1{
+
+
+font-size:
+
+80px;
+
+
+margin-bottom:
+
+10px;
+
+
+}
+
+
+
+.header h2{
+
+
+font-size:
+
+35px;
+
+
+font-weight:
+
+400;
+
+
+}
+
+
+
+.header p{
+
+
+font-size:
+
+20px;
+
+
+color:#777;
+
+
+}
+
+
+
+
+.download{
+
+
+display:inline-block;
+
+
+margin-top:
+
+30px;
+
+
+padding:
+
+15px 40px;
+
+
+border-radius:
+
+40px;
+
+
+background:
+
+#FFD6E8;
+
+
+color:#555;
+
+
+text-decoration:none;
+
+
+transition:
+
+0.3s;
+
+
+}
+
+
+
+.download:hover{
+
+
+transform:
+
+translateY(-5px);
+
+
+}
+
+
+
+
+
+.card{
+
+
+margin-bottom:
+
+40px;
+
+
+padding:
+
+40px;
+
+
+border-radius:
+
+35px;
+
+
+background:
+
+rgba(255,255,255,0.65);
+
+
+backdrop-filter:
+
+blur(20px);
+
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+
+
+}
+
+
+
+
+.card h2{
+
+
+font-size:
+
+32px;
+
+
+margin-bottom:
+
+25px;
+
+
+}
+
+
+
+
+
+.item,
+.project{
+
+
+margin-bottom:
+
+25px;
+
+
+}
+
+
+
+
+
+.item h3,
+.project h3{
+
+
+font-size:
+
+22px;
+
+
+}
+
+
+
+.skills{
+
+
+display:flex;
+
+
+flex-wrap:wrap;
+
+
+gap:
+
+15px;
+
+
+}
+
+
+.skills span{
+
+
+padding:
+
+10px 25px;
+
+
+background:
+
+#E4EEFF;
+
+
+border-radius:
+
+30px;
+
+
+}
+
+
+
+
+
+</style>
