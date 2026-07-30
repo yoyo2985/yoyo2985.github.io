@@ -21,17 +21,11 @@ const { title = "Yoyo's Universe" } = Astro.props;
 <script is:inline>
 
 window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
 
 gtag('js', new Date());
-
-
 gtag('config', 'G-0M3RYJVHH0');
-
 
 </script>
 
