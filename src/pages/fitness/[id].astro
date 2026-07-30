@@ -13,6 +13,15 @@ export async function getStaticPaths() {
 
 const { workout } = Astro.props;
 const { Content } = await render(workout);
+
+const typeIcon =
+  workout.data.type === "Strength"
+    ? "💪"
+    : workout.data.type === "Recovery"
+    ? "🧘"
+    : workout.data.type === "Cardio"
+    ? "🏃"
+    : "⭐";
 ---
 
 
@@ -30,13 +39,19 @@ const { Content } = await render(workout);
 <a href="/fitness" class="back">← Back to Fitness</a>
 
 <div class="type-badge">
-  {workout.data.type === "Strength" ? "💪" : workout.data.type === "Recovery" ? "🧘" : "🏃"}
-  {workout.data.type}
+  {typeIcon} {workout.data.type}
 </div>
 
 <h1>{workout.data.title}</h1>
 
-<time>{workout.data.date}</time>
+<div class="meta-row">
+  <span>{workout.data.mood}</span>
+  <time>{workout.data.date}</time>
+  <span>{workout.data.duration} min</span>
+  {workout.data.weight && (
+    <span>{workout.data.weight} kg</span>
+  )}
+</div>
 
 </div>
 
@@ -143,11 +158,34 @@ margin-bottom:15px;
 
 
 
-.header time{
+.meta-row{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
 
 color:#999;
 
-font-size:18px;
+font-size:17px;
+
+}
+
+
+
+.meta-row span,
+.meta-row time{
+
+background:white;
+
+padding:8px 20px;
+
+border-radius:20px;
+
+box-shadow:0 4px 12px rgba(0,0,0,.05);
 
 }
 
@@ -165,9 +203,7 @@ padding:50px;
 
 border-radius:40px;
 
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.08);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 
 line-height:1.8;
 

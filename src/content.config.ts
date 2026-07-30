@@ -33,6 +33,12 @@ date:z.string(),
 
 type:z.string().default("Other"),
 
+duration:z.number().default(0),
+
+weight:z.number().optional(),
+
+mood:z.string().default("🙂"),
+
 description:z.string().optional(),
 
 feeling:z.string().optional()

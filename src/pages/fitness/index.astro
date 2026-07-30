@@ -1,6 +1,38 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
+import FitnessChart from "../../components/FitnessChart.astro";
+import { getCollection } from "astro:content";
+
+const workouts = await getCollection("fitness");
+
+const records = workouts.sort(
+  (a, b) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const latest = records[0];
+const previous = records[1];
+
+const totalDays = records.length;
+const totalMinutes = records.reduce(
+  (sum, r) => sum + (r.data.duration || 0),
+  0
+);
+const currentWeight = latest?.data.weight || 0;
+
+const weightData = records
+  .filter((r) => r.data.weight)
+  .map((r) => ({
+    label: r.data.date.slice(5),
+    value: r.data.weight!,
+  }))
+  .reverse();
+
+const durationData = records.map((r) => ({
+  label: r.data.date.slice(5),
+  value: r.data.duration || 0,
+})).reverse();
 ---
 
 
@@ -38,10 +70,6 @@ discipline and myself.
 
 
 
-
-
-
-
 <section class="today">
 
 
@@ -50,161 +78,51 @@ Today
 </h2>
 
 
-<div class="today-card">
-
-
-<div class="today-info">
-
-<h3>
-Upper Body Training
-</h3>
-
-
-<p>
-2026.07.30
-</p>
-
-</div>
-
-
-<span class="badge">
-🔥 Active
-</span>
-
-
-</div>
+{
+latest ? (
+  <div class="today-card">
+    <div class="today-info">
+      <h3>{latest.data.title}</h3>
+      <p>{latest.data.date} · {latest.data.type}</p>
+    </div>
+    <span class="badge">{latest.data.mood} {latest.data.duration}min</span>
+  </div>
+) : (
+  <div class="today-card empty">
+    <p>No training records yet. Start logging!</p>
+  </div>
+)
+}
 
 
 </section>
 
 
 
-
-
-<section class="workout">
-
-
-<h2>
-Today's Workout
-</h2>
-
-
-
-<div class="grid">
-
-
-<div class="card strength">
-
-<div class="card-icon">💪</div>
-
-<h3>
-Pull Up
-</h3>
-
-<p>
-5 × 8
-</p>
-
-</div>
-
-
-
-<div class="card strength">
-
-<div class="card-icon">🏋️</div>
-
-<h3>
-Bench Press
-</h3>
-
-<p>
-4 × 10
-</p>
-
-</div>
-
-
-
-<div class="card recovery">
-
-<div class="card-icon">🧘</div>
-
-<h3>
-Shoulder Mobility
-</h3>
-
-<p>
-15 min
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section class="progress">
+<section class="analytics">
 
 
 <h2>
-Progress
+Analytics
 </h2>
-
 
 
 <div class="stats">
 
-
 <div class="stat-card">
-
-<h3>
-68kg
-</h3>
-
-<p>
-Weight
-</p>
-
+  <h3>{totalDays}</h3>
+  <p>Training Days</p>
 </div>
 
-
-
 <div class="stat-card">
-
-<h3>
-+10
-</h3>
-
-<p>
-Pull Up Reps
-</p>
-
+  <h3>{Math.round(totalMinutes / 60)}h</h3>
+  <p>Total Time</p>
 </div>
 
-
-
 <div class="stat-card">
-
-<h3>
-56
-</h3>
-
-<p>
-Training Days
-</p>
-
+  <h3>{currentWeight}kg</h3>
+  <p>Current Weight</p>
 </div>
-
-
 
 </div>
 
@@ -213,31 +131,82 @@ Training Days
 
 
 
+<section class="charts">
 
 
+<h2>
+Trends
+</h2>
 
-<section class="log-entry">
 
+<div class="chart-grid">
 
-<div class="log-card">
-
-<div class="log-card-icon">📋</div>
-
-<div class="log-card-content">
-
-<h2>Training Log</h2>
-
-<p>View all your workout history</p>
-
+<div class="chart-card">
+  <h3>Weight Curve</h3>
+  <FitnessChart
+    type="line"
+    labels={weightData.map((d) => d.label)}
+    data={weightData.map((d) => d.value)}
+    label="Weight (kg)"
+    color="#FF9BC5"
+  />
 </div>
 
-<a href="/fitness/log" class="log-card-btn">View All →</a>
+<div class="chart-card">
+  <h3>Training Duration</h3>
+  <FitnessChart
+    type="bar"
+    labels={durationData.map((d) => d.label)}
+    data={durationData.map((d) => d.value)}
+    label="Duration (min)"
+    color="#91BAFF"
+  />
+</div>
 
 </div>
 
 
 </section>
 
+
+
+<section class="history">
+
+
+<h2>
+Training History
+</h2>
+
+
+
+<div class="records">
+
+{
+records.map((item) => (
+  <a
+    href={`/fitness/${item.id}`}
+    class="record"
+  >
+    <div class="record-icon">
+      {item.data.type === "Strength" ? "�" : item.data.type === "Recovery" ? "🧘" : "🏃"}
+    </div>
+    <div class="record-info">
+      <span class="record-type">{item.data.type}</span>
+      <h3>{item.data.title}</h3>
+      <p>{item.data.description}</p>
+    </div>
+    <div class="record-meta">
+      <span>{item.data.mood} {item.data.duration}min</span>
+      <time>{item.data.date}</time>
+    </div>
+  </a>
+))
+}
+
+</div>
+
+
+</section>
 
 
 
@@ -252,63 +221,27 @@ Fitness Philosophy
 <div class="philosophy-grid">
 
 <div class="philosophy-card">
-
-<span class="icon">🧠</span>
-
-<h3>
-Brain
-</h3>
-
-<p>
-Train intelligence
-like a muscle.
-</p>
-
+  <span class="icon">🧠</span>
+  <h3>Brain</h3>
+  <p>Train intelligence like a muscle.</p>
 </div>
-
-
 
 <div class="philosophy-card">
-
-<span class="icon">💪</span>
-
-<h3>
-Body
-</h3>
-
-<p>
-Build strength
-with consistency.
-</p>
-
+  <span class="icon">💪</span>
+  <h3>Body</h3>
+  <p>Build strength with consistency.</p>
 </div>
-
-
 
 <div class="philosophy-card">
-
-<span class="icon">🌱</span>
-
-<h3>
-Discipline
-</h3>
-
-<p>
-Small daily wins
-compound over years.
-</p>
-
+  <span class="icon">🌱</span>
+  <h3>Discipline</h3>
+  <p>Small daily wins compound over years.</p>
 </div>
-
-
 
 </div>
 
 
 </section>
-
-
-
 
 
 
@@ -324,8 +257,7 @@ compound over years.
 
 .fitness{
 
-padding:
-140px 10%;
+padding:140px 10%;
 
 background:#FFF9F5;
 
@@ -372,108 +304,9 @@ color:#777;
 
 
 .today,
-.workout,
-.progress,
-.log-entry{
-
-margin-top:100px;
-
-}
-
-
-
-.log-card{
-
-display:flex;
-
-align-items:center;
-
-gap:30px;
-
-background:#E4EEFF;
-
-padding:40px;
-
-border-radius:40px;
-
-transition:.3s;
-
-}
-
-
-
-.log-card:hover{
-
-transform:translateY(-5px);
-
-}
-
-
-
-.log-card-icon{
-
-font-size:50px;
-
-}
-
-
-
-.log-card-content{
-
-flex:1;
-
-}
-
-
-
-.log-card-content h2{
-
-font-size:28px;
-
-margin-bottom:6px;
-
-}
-
-
-
-.log-card-content p{
-
-color:#777;
-
-font-size:18px;
-
-}
-
-
-
-.log-card-btn{
-
-text-decoration:none;
-
-background:white;
-
-color:#555;
-
-padding:14px 30px;
-
-border-radius:30px;
-
-font-weight:600;
-
-white-space:nowrap;
-
-}
-
-
-
-.log-card-btn:hover{
-
-background:#FFE5F0;
-
-}
-
-
-
+.analytics,
+.charts,
+.history,
 .philosophy{
 
 margin-top:100px;
@@ -505,6 +338,20 @@ background:#DFF7E3;
 padding:40px;
 
 border-radius:40px;
+
+}
+
+
+
+.today-card.empty{
+
+justify-content:center;
+
+text-align:center;
+
+color:#999;
+
+font-size:18px;
 
 }
 
@@ -542,99 +389,11 @@ font-size:16px;
 
 
 
-.grid{
-
-display:grid;
-
-grid-template-columns:
-
-repeat(3,1fr);
-
-gap:30px;
-
-}
-
-
-
-.card{
-
-background:white;
-
-padding:35px;
-
-border-radius:35px;
-
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.08);
-
-transition:.3s;
-
-}
-
-
-
-.card:hover{
-
-transform:translateY(-8px);
-
-}
-
-
-
-.card-icon{
-
-font-size:40px;
-
-margin-bottom:15px;
-
-}
-
-
-
-.card h3{
-
-font-size:24px;
-
-margin-bottom:8px;
-
-}
-
-
-
-.card p{
-
-color:#777;
-
-font-size:20px;
-
-}
-
-
-
-.strength{
-
-background:#E4EEFF;
-
-}
-
-
-
-.recovery{
-
-background:#E8D9FF;
-
-}
-
-
-
 .stats{
 
 display:grid;
 
-grid-template-columns:
-
-repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 
 gap:30px;
 
@@ -686,13 +445,193 @@ font-size:18px;
 
 
 
+.chart-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:30px;
+
+}
+
+
+
+.chart-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+
+.chart-card h3{
+
+font-size:22px;
+
+margin-bottom:20px;
+
+color:#555;
+
+}
+
+
+
+.records{
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+
+
+.record{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+padding:30px 35px;
+
+border-radius:30px;
+
+background:white;
+
+text-decoration:none;
+
+color:#555;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+transition:.3s;
+
+}
+
+
+
+.record:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 15px 40px rgba(0,0,0,.1);
+
+}
+
+
+
+.record-icon{
+
+font-size:40px;
+
+width:60px;
+
+height:60px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:18px;
+
+background:#E4EEFF;
+
+}
+
+
+
+.record-info{
+
+flex:1;
+
+}
+
+
+
+.record-type{
+
+display:inline-block;
+
+padding:5px 14px;
+
+border-radius:20px;
+
+background:#FFE5F0;
+
+font-size:13px;
+
+margin-bottom:6px;
+
+}
+
+
+
+.record-info h3{
+
+font-size:22px;
+
+margin-bottom:4px;
+
+}
+
+
+
+.record-info p{
+
+color:#888;
+
+font-size:15px;
+
+}
+
+
+
+.record-meta{
+
+text-align:right;
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+font-size:14px;
+
+color:#999;
+
+}
+
+
+
+.record-meta time{
+
+font-weight:600;
+
+color:#777;
+
+}
+
+
+
 .philosophy-grid{
 
 display:grid;
 
-grid-template-columns:
-
-repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 
 gap:30px;
 
@@ -712,9 +651,7 @@ border-radius:35px;
 
 text-align:center;
 
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.06);
+box-shadow:0 15px 40px rgba(0,0,0,.06);
 
 transition:.3s;
 
@@ -764,8 +701,8 @@ line-height:1.7;
 
 @media(max-width:900px){
 
-.grid,
 .stats,
+.chart-grid,
 .philosophy-grid{
 
 grid-template-columns:1fr;
@@ -774,13 +711,26 @@ grid-template-columns:1fr;
 
 
 
-.today-card{
+.today-card,
+.record{
 
 flex-direction:column;
 
-gap:20px;
+gap:15px;
 
 text-align:center;
+
+}
+
+
+
+.record-meta{
+
+text-align:center;
+
+flex-direction:row;
+
+justify-content:center;
 
 }
 
