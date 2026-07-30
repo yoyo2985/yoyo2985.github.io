@@ -1,0 +1,328 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import "../../styles/global.css";
+---
+
+<MainLayout title="Yoyo | 肺癌脑膜转移AI预测">
+
+<Navbar />
+
+<a class="back-link" href="/resume">← 返回简历 <span class="en">← Back to Resume</span></a>
+
+<section class="project-page">
+
+<div class="hero">
+
+<div class="hero-icon">🧠</div>
+
+<h1>
+基于头部医学影像的肺癌脑膜转移预测系统
+<span class="en">MRI-based Lung Cancer Leptomeningeal Metastasis Prediction System</span>
+</h1>
+
+<p class="hero-sub">
+第一主持人 · 国创赛金奖 · 国家级项目
+<span class="en">Lead Researcher · National Innovation Competition Gold Award · National Level</span>
+</p>
+
+</div>
+
+<section class="card">
+
+<h2>
+项目概述
+<span class="en">Project Overview</span>
+</h2>
+
+<p>
+本项目针对肺癌脑膜转移这一临床难题，基于头部MRI医学影像构建人工智能预测系统。肺癌脑膜转移（LM）是肺癌最严重的并发症之一，早期准确诊断对患者治疗方案选择和预后至关重要。本项目通过深度学习与多模态融合技术，为临床医生提供智能辅助诊断工具。
+<span class="en">This project addresses the clinical challenge of lung cancer leptomeningeal metastasis (LM) by building an AI prediction system based on head MRI. LM is one of the most severe complications of lung cancer, and early accurate diagnosis is critical for treatment planning and prognosis. This project provides an intelligent diagnostic tool for clinicians through deep learning and multimodal fusion.</span>
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>
+我的角色
+<span class="en">My Role</span>
+</h2>
+
+<p class="role-intro">
+第一主持人，核心负责：
+<span class="en">Lead Researcher, core responsibilities:</span>
+</p>
+
+<div class="role-list">
+
+<p>
+医学影像数据处理流程（DICOM解析、影像配准、切片提取）
+<span class="en">Medical image processing pipeline (DICOM parsing, registration, slice extraction)</span>
+</p>
+
+<p>
+深度学习模型设计（CNN + Transformer 混合架构）
+<span class="en">Deep learning model design (CNN + Transformer hybrid architecture)</span>
+</p>
+
+<p>
+多模态特征融合策略
+<span class="en">Multimodal feature fusion strategy</span>
+</p>
+
+<p>
+可解释AI分析（Grad-CAM、注意力可视化）
+<span class="en">Explainable AI analysis (Grad-CAM, attention visualization)</span>
+</p>
+
+<p>
+项目统筹与团队协作
+<span class="en">Project coordination and team collaboration</span>
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>
+技术路线
+<span class="en">Technical Approach</span>
+</h2>
+
+<div class="pipeline">
+<span>MRI数据</span>
+<span class="arrow">→</span>
+<span>预处理</span>
+<span class="arrow">→</span>
+<span>CNN特征提取</span>
+<span class="arrow">→</span>
+<span>Transformer编码</span>
+<span class="arrow">→</span>
+<span>多模态融合</span>
+<span class="arrow">→</span>
+<span>分类预测</span>
+<span class="arrow">→</span>
+<span>可解释分析</span>
+</div>
+
+<div class="tags">
+<span>MRI</span>
+<span>CNN</span>
+<span>Transformer</span>
+<span>Multimodal AI</span>
+<span>Explainable AI</span>
+<span>Medical Imaging</span>
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>
+核心成果
+<span class="en">Key Results</span>
+</h2>
+
+<p>
+🏆 项目获国创赛金奖，并升级为国家级项目
+<span class="en">🏆 Project won National Innovation Competition Gold Award and upgraded to national level</span>
+</p>
+
+<p>
+🔬 构建了完整的MRI肺癌脑膜转移预测系统
+<span class="en">🔬 Built a complete MRI-based lung cancer LM prediction system</span>
+</p>
+
+<p>
+💡 锤炼了跨领域问题解决与项目统筹能力
+<span class="en">💡 Strengthened cross-disciplinary problem-solving and project management capabilities</span>
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>
+技术栈
+<span class="en">Tech Stack</span>
+</h2>
+
+<div class="tags">
+<span>Python</span>
+<span>PyTorch</span>
+<span>MONAI</span>
+<span>OpenCV</span>
+<span>Transformer</span>
+<span>Grad-CAM</span>
+<span>DICOM</span>
+</div>
+
+</section>
+
+</section>
+
+</MainLayout>
+
+<style>
+
+.project-page {
+
+padding: 140px 10% 80px;
+
+background: #FFF5FA;
+
+}
+
+.back-link {
+
+position: fixed;
+top: 30px;
+left: 60px;
+z-index: 100;
+
+padding: 10px 20px;
+
+background: rgba(255,255,255,0.65);
+backdrop-filter: blur(20px);
+border-radius: 20px;
+box-shadow: 0 5px 15px rgba(0,0,0,.05);
+
+text-decoration: none;
+color: #555;
+font-size: 14px;
+
+transition: 0.3s;
+
+}
+
+.back-link:hover {
+transform: translateX(-5px);
+background: rgba(255,255,255,0.85);
+}
+
+.hero {
+
+text-align: center;
+margin-bottom: 80px;
+
+}
+
+.hero-icon {
+
+font-size: 80px;
+margin-bottom: 20px;
+
+}
+
+.hero h1 {
+
+font-size: 48px;
+margin-bottom: 15px;
+
+line-height: 1.3;
+
+}
+
+.hero-sub {
+
+font-size: 20px;
+color: #888;
+
+}
+
+.card {
+
+margin-bottom: 40px;
+padding: 40px;
+border-radius: 35px;
+background: rgba(255,255,255,0.65);
+backdrop-filter: blur(20px);
+box-shadow: 0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.card h2 {
+
+font-size: 32px;
+margin-bottom: 25px;
+
+}
+
+.card p {
+
+font-size: 17px;
+line-height: 1.8;
+color: #555;
+margin-bottom: 12px;
+
+}
+
+.role-intro {
+
+font-weight: 600;
+margin-bottom: 20px !important;
+
+}
+
+.role-list p {
+
+padding-left: 20px;
+border-left: 3px solid #FFD6E8;
+margin-bottom: 15px;
+
+}
+
+.pipeline {
+
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 10px;
+padding: 25px;
+background: rgba(255,255,255,0.5);
+border-radius: 20px;
+margin-bottom: 25px;
+
+}
+
+.pipeline span {
+
+padding: 8px 18px;
+background: #FFD6E8;
+border-radius: 20px;
+font-size: 14px;
+color: #555;
+
+}
+
+.pipeline .arrow {
+
+background: none;
+color: #bbb;
+font-weight: bold;
+padding: 0;
+
+}
+
+.tags {
+
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+
+}
+
+.tags span {
+
+padding: 10px 22px;
+background: #E8D9FF;
+border-radius: 30px;
+font-size: 14px;
+color: #666;
+
+}
+
+</style>

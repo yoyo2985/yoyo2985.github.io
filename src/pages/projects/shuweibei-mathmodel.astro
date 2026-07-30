@@ -1,0 +1,268 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import "../../styles/global.css";
+---
+
+<MainLayout title="Yoyo | 数维杯数学建模竞赛">
+
+<Navbar />
+
+<section class="project-page">
+
+<a class="back-link" href="/resume">← 返回简历 <span class="en">← Back to Resume</span></a>
+
+<div class="hero">
+<div class="hero-icon">📐</div>
+<h1>
+数维杯数学建模竞赛
+<span class="en">Shuwei Cup Mathematical Modeling Competition</span>
+</h1>
+<p>
+数学建模竞赛经历
+<span class="en">Mathematical Modeling Competition Experience</span>
+</p>
+</div>
+
+<section class="card">
+<h2>
+竞赛概述
+<span class="en">Competition Overview</span>
+</h2>
+<p>
+数维杯数学建模竞赛是一项面向大学生的数学建模竞赛，旨在考察参赛者运用数学方法解决实际问题的能力。竞赛要求参赛队伍在规定时间内完成问题分析、模型构建、算法实现与论文撰写。
+<span class="en">The Shuwei Cup Mathematical Modeling Competition is a contest for college students, testing their ability to apply mathematical methods to solve real-world problems. Teams are required to complete problem analysis, model construction, algorithm implementation, and paper writing within a specified time.</span>
+</p>
+</section>
+
+<section class="card">
+<h2>
+竞赛内容
+<span class="en">Competition Content</span>
+</h2>
+<ul>
+<li>
+问题分析与数学建模
+<span class="en">Problem analysis and mathematical modeling</span>
+</li>
+<li>
+算法设计与编程实现
+<span class="en">Algorithm design and programming implementation</span>
+</li>
+<li>
+数据处理与结果可视化
+<span class="en">Data processing and result visualization</span>
+</li>
+<li>
+建模论文撰写
+<span class="en">Modeling paper writing</span>
+</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>
+技术路线
+<span class="en">Technical Approach</span>
+</h2>
+<div class="pipeline">
+<div>问题分析</div>
+<span>→</span>
+<div>模型假设</div>
+<span>→</span>
+<div>数学建模</div>
+<span>→</span>
+<div>算法实现</div>
+<span>→</span>
+<div>结果验证</div>
+<span>→</span>
+<div>论文撰写</div>
+</div>
+<div class="tags">
+<span>Mathematical Modeling</span>
+<span>Python</span>
+<span>MATLAB</span>
+<span>Data Analysis</span>
+<span>Optimization</span>
+</div>
+</section>
+
+<section class="card">
+<h2>
+代码仓库
+<span class="en">Code Repository</span>
+</h2>
+<p>
+以下是本项目的 GitHub 仓库链接，包含完整的代码与文档。
+<span class="en">Below is the GitHub repository link for this project, containing complete code and documentation.</span>
+</p>
+<a href="https://github.com/DREAMERhyh/2026-spring-shuweibei-mathmodel.git" target="_blank" rel="noopener" class="github-link">
+🔗 GitHub 仓库 <span class="en">GitHub Repository</span>
+</a>
+</section>
+
+<section class="card">
+<h2>
+技术栈
+<span class="en">Tech Stack</span>
+</h2>
+<div class="tags">
+<span>Python</span>
+<span>MATLAB</span>
+<span>NumPy</span>
+<span>Pandas</span>
+<span>Matplotlib</span>
+<span>Mathematical Modeling</span>
+</div>
+</section>
+
+</section>
+
+</MainLayout>
+
+<style>
+.project-page{
+padding:140px 10% 80px;
+background: linear-gradient(180deg, #FFF9E6 0%, #FFF5E0 100%);
+}
+
+.back-link{
+display:inline-block;
+margin-bottom:40px;
+padding:12px 28px;
+border-radius:30px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(20px);
+box-shadow:0 8px 24px rgba(0,0,0,.06);
+text-decoration:none;
+color:#555;
+transition:.3s;
+font-size:15px;
+}
+.back-link:hover{
+transform:translateX(-5px);
+box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.hero{
+text-align:center;
+margin-bottom:70px;
+}
+.hero-icon{
+font-size:90px;
+margin-bottom:20px;
+}
+.hero h1{
+font-size:52px;
+line-height:1.3;
+margin-bottom:15px;
+}
+.hero p{
+font-size:22px;
+color:#777;
+}
+
+.card{
+margin-bottom:35px;
+padding:40px;
+border-radius:35px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(20px);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+.card h2{
+font-size:30px;
+margin-bottom:20px;
+}
+.card p{
+font-size:17px;
+line-height:1.8;
+color:#444;
+}
+
+.card ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+.card ul li{
+padding:12px 0 12px 25px;
+position:relative;
+font-size:16px;
+line-height:1.7;
+color:#444;
+border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.card ul li:last-child{
+border-bottom:none;
+}
+.card ul li::before{
+content:"✦";
+position:absolute;
+left:0;
+color:#D4A017;
+}
+
+.pipeline{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+margin:20px 0 25px;
+font-size:17px;
+}
+.pipeline div{
+padding:12px 24px;
+background:#FFF3CD;
+border-radius:25px;
+color:#555;
+font-weight:500;
+}
+.pipeline span{
+color:#D4A017;
+font-weight:bold;
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:15px;
+}
+.tags span{
+padding:8px 20px;
+background:#FFF3CD;
+border-radius:25px;
+font-size:14px;
+color:#666;
+}
+
+.github-link{
+display:inline-block;
+margin-top:20px;
+padding:16px 36px;
+border-radius:40px;
+background:#333;
+color:white !important;
+text-decoration:none;
+font-size:17px;
+font-weight:500;
+transition:.3s;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.github-link:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+background:#222;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:36px;}
+.hero p{font-size:18px;}
+.card{padding:30px 25px;}
+.card h2{font-size:24px;}
+.pipeline{font-size:15px;}
+.pipeline div{padding:10px 18px;}
+}
+</style>

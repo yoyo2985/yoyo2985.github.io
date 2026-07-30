@@ -41,3 +41,47 @@ body {
     sans-serif;
 
 }
+
+.en {
+
+    font-size: 0.75em;
+
+    color: #999;
+
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+
+    display: block;
+
+    line-height: 1.4;
+
+    margin-top: 2px;
+
+}
+
+nav a .en {
+
+    display: none;
+
+}
+
+.title-main {
+
+    display: block;
+
+}
+
+.bilingual {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.bilingual .en {
+
+    margin-top: 4px;
+
+}
