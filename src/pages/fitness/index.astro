@@ -1,0 +1,790 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+---
+
+
+<MainLayout title="Yoyo | Fitness">
+
+
+<Navbar />
+
+
+<section class="fitness">
+
+
+<div class="hero">
+
+
+<div class="emoji">
+💪
+</div>
+
+
+<h1>
+Fitness Lab
+</h1>
+
+
+<p>
+
+Building strength,
+discipline and myself.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<section class="today">
+
+
+<h2>
+Today
+</h2>
+
+
+<div class="today-card">
+
+
+<div class="today-info">
+
+<h3>
+Upper Body Training
+</h3>
+
+
+<p>
+2026.07.30
+</p>
+
+</div>
+
+
+<span class="badge">
+🔥 Active
+</span>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="workout">
+
+
+<h2>
+Today's Workout
+</h2>
+
+
+
+<div class="grid">
+
+
+<div class="card strength">
+
+<div class="card-icon">💪</div>
+
+<h3>
+Pull Up
+</h3>
+
+<p>
+5 × 8
+</p>
+
+</div>
+
+
+
+<div class="card strength">
+
+<div class="card-icon">🏋️</div>
+
+<h3>
+Bench Press
+</h3>
+
+<p>
+4 × 10
+</p>
+
+</div>
+
+
+
+<div class="card recovery">
+
+<div class="card-icon">🧘</div>
+
+<h3>
+Shoulder Mobility
+</h3>
+
+<p>
+15 min
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="progress">
+
+
+<h2>
+Progress
+</h2>
+
+
+
+<div class="stats">
+
+
+<div class="stat-card">
+
+<h3>
+68kg
+</h3>
+
+<p>
+Weight
+</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h3>
++10
+</h3>
+
+<p>
+Pull Up Reps
+</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h3>
+56
+</h3>
+
+<p>
+Training Days
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="log-entry">
+
+
+<div class="log-card">
+
+<div class="log-card-icon">📋</div>
+
+<div class="log-card-content">
+
+<h2>Training Log</h2>
+
+<p>View all your workout history</p>
+
+</div>
+
+<a href="/fitness/log" class="log-card-btn">View All →</a>
+
+</div>
+
+
+</section>
+
+
+
+
+<section class="philosophy">
+
+
+<h2>
+Fitness Philosophy
+</h2>
+
+
+<div class="philosophy-grid">
+
+<div class="philosophy-card">
+
+<span class="icon">🧠</span>
+
+<h3>
+Brain
+</h3>
+
+<p>
+Train intelligence
+like a muscle.
+</p>
+
+</div>
+
+
+
+<div class="philosophy-card">
+
+<span class="icon">💪</span>
+
+<h3>
+Body
+</h3>
+
+<p>
+Build strength
+with consistency.
+</p>
+
+</div>
+
+
+
+<div class="philosophy-card">
+
+<span class="icon">🌱</span>
+
+<h3>
+Discipline
+</h3>
+
+<p>
+Small daily wins
+compound over years.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+</section>
+
+
+</MainLayout>
+
+
+
+<style>
+
+
+.fitness{
+
+padding:
+140px 10%;
+
+background:#FFF9F5;
+
+}
+
+
+
+.hero{
+
+text-align:center;
+
+margin-bottom:40px;
+
+}
+
+
+
+.hero .emoji{
+
+font-size:90px;
+
+}
+
+
+
+.hero h1{
+
+font-size:70px;
+
+margin:15px 0;
+
+}
+
+
+
+.hero p{
+
+font-size:22px;
+
+color:#777;
+
+}
+
+
+
+.today,
+.workout,
+.progress,
+.log-entry{
+
+margin-top:100px;
+
+}
+
+
+
+.log-card{
+
+display:flex;
+
+align-items:center;
+
+gap:30px;
+
+background:#E4EEFF;
+
+padding:40px;
+
+border-radius:40px;
+
+transition:.3s;
+
+}
+
+
+
+.log-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+
+.log-card-icon{
+
+font-size:50px;
+
+}
+
+
+
+.log-card-content{
+
+flex:1;
+
+}
+
+
+
+.log-card-content h2{
+
+font-size:28px;
+
+margin-bottom:6px;
+
+}
+
+
+
+.log-card-content p{
+
+color:#777;
+
+font-size:18px;
+
+}
+
+
+
+.log-card-btn{
+
+text-decoration:none;
+
+background:white;
+
+color:#555;
+
+padding:14px 30px;
+
+border-radius:30px;
+
+font-weight:600;
+
+white-space:nowrap;
+
+}
+
+
+
+.log-card-btn:hover{
+
+background:#FFE5F0;
+
+}
+
+
+
+.philosophy{
+
+margin-top:100px;
+
+}
+
+
+
+h2{
+
+font-size:45px;
+
+margin-bottom:30px;
+
+}
+
+
+
+.today-card{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:#DFF7E3;
+
+padding:40px;
+
+border-radius:40px;
+
+}
+
+
+
+.today-info h3{
+
+font-size:28px;
+
+}
+
+
+
+.today-info p{
+
+color:#777;
+
+margin-top:8px;
+
+}
+
+
+
+.badge{
+
+background:#FFE5F0;
+
+padding:12px 28px;
+
+border-radius:30px;
+
+font-size:16px;
+
+}
+
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+gap:30px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+padding:35px;
+
+border-radius:35px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.card-icon{
+
+font-size:40px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.card h3{
+
+font-size:24px;
+
+margin-bottom:8px;
+
+}
+
+
+
+.card p{
+
+color:#777;
+
+font-size:20px;
+
+}
+
+
+
+.strength{
+
+background:#E4EEFF;
+
+}
+
+
+
+.recovery{
+
+background:#E8D9FF;
+
+}
+
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+gap:30px;
+
+}
+
+
+
+.stat-card{
+
+background:#FFE5F0;
+
+padding:40px;
+
+border-radius:35px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.stat-card h3{
+
+font-size:48px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.stat-card p{
+
+color:#777;
+
+font-size:18px;
+
+}
+
+
+
+.philosophy-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+gap:30px;
+
+}
+
+
+
+.philosophy-card{
+
+background:rgba(255,255,255,0.7);
+
+backdrop-filter:blur(15px);
+
+padding:35px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.06);
+
+transition:.3s;
+
+}
+
+
+
+.philosophy-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.philosophy-card .icon{
+
+font-size:50px;
+
+display:block;
+
+margin-bottom:15px;
+
+}
+
+
+
+.philosophy-card h3{
+
+font-size:26px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.philosophy-card p{
+
+color:#777;
+
+line-height:1.7;
+
+}
+
+
+
+@media(max-width:900px){
+
+.grid,
+.stats,
+.philosophy-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.today-card{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+}
+
+
+</style>
