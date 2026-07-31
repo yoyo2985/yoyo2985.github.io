@@ -1,0 +1,257 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import "../../styles/global.css";
+---
+
+<MainLayout title="Yoyo | 减速箱设计">
+
+<Navbar />
+
+<section class="project-page">
+
+<a class="back-link" href="/research">← 返回研究 <span class="en">← Back to Research</span></a>
+
+<div class="hero">
+<div class="hero-icon">⚙️</div>
+<h1>
+减速箱的设计
+<span class="en">Gearbox Design</span>
+</h1>
+<p>
+机械设计课程项目 <span class="en">Mechanical Design Course Project</span>
+</p>
+</div>
+
+<section class="card">
+<h2>
+项目概述
+<span class="en">Project Overview</span>
+</h2>
+<p>
+本项目为机械设计课程的综合性设计项目，完成了从参数计算、结构设计到工程图绘制的全过程。设计内容包括减速箱总体方案设计、齿轮传动设计、轴的设计、轴承选择与校核，以及总装图和零部件图的绘制。
+<span class="en">This project is a comprehensive design project for the mechanical design course, covering the entire process from parameter calculation, structural design to engineering drawing. The design includes overall gearbox scheme, gear transmission design, shaft design, bearing selection and verification, as well as assembly and part drawings.</span>
+</p>
+</section>
+
+<section class="card">
+<h2>
+设计计算说明书
+<span class="en">Design Calculation Document</span>
+</h2>
+<p>
+完整的设计计算说明书，包含传动方案选择、齿轮几何参数计算、轴的强度校核、轴承寿命计算等内容。
+<span class="en">Complete design calculation document, including transmission scheme selection, gear geometric parameter calculation, shaft strength verification, bearing life calculation, etc.</span>
+</p>
+<div class="action-buttons">
+<a href="/gearbox/减速箱设计计算说明书.pdf" download class="btn-download">
+📥 下载PDF <span class="en">Download PDF</span>
+</a>
+<a href="/gearbox/减速箱设计计算说明书.pdf" target="_blank" rel="noopener" class="btn-view">
+👁 在线查看 <span class="en">View Online</span>
+</a>
+</div>
+<div class="pdf-preview">
+<iframe src="/gearbox/减速箱设计计算说明书.pdf#view=FitH" title="设计计算说明书"></iframe>
+</div>
+</section>
+
+<section class="card">
+<h2>
+总装体爆炸图
+<span class="en">Assembly Explosion View</span>
+</h2>
+<p>
+减速箱总装体的爆炸图动画视频，展示各零部件的装配关系与结构层次。
+<span class="en">Animated explosion view of the gearbox assembly, showing the assembly relationships and structural layers of each component.</span>
+</p>
+<div class="video-container">
+<video controls preload="metadata">
+<source src="/gearbox/减速箱总装体（爆炸图）.mp4" type="video/mp4">
+您的浏览器不支持视频播放。 <span class="en">Your browser does not support video playback.</span>
+</video>
+</div>
+</section>
+
+<section class="card">
+<h2>
+二维工程图
+<span class="en">2D Engineering Drawings</span>
+</h2>
+<p>
+减速箱总装体的二维工程图，包含尺寸标注、技术要求与零部件明细表。
+<span class="en">2D engineering drawing of the gearbox assembly, including dimension annotations, technical requirements and parts list.</span>
+</p>
+<div class="pdf-preview">
+<iframe src="/gearbox/减速箱总装体二维图-模型.pdf#view=FitH" title="二维工程图"></iframe>
+</div>
+</section>
+
+<section class="card">
+<h2>
+技术栈
+<span class="en">Tech Stack</span>
+</h2>
+<div class="tags">
+<span>Mechanical Design</span>
+<span>Gear Design</span>
+<span>Shaft Design</span>
+<span>Bearing Selection</span>
+<span>SolidWorks</span>
+<span>AutoCAD</span>
+<span>Engineering Drawing</span>
+</div>
+</section>
+
+</section>
+
+</MainLayout>
+
+<style>
+.project-page{
+padding:140px 10% 80px;
+background: linear-gradient(180deg, #FFF5FA 0%, #F0F5FF 100%);
+}
+
+.back-link{
+display:inline-block;
+margin-bottom:40px;
+padding:12px 28px;
+border-radius:30px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(20px);
+box-shadow:0 8px 24px rgba(0,0,0,.06);
+text-decoration:none;
+color:#555;
+transition:.3s;
+font-size:15px;
+}
+.back-link:hover{
+transform:translateX(-5px);
+box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.hero{
+text-align:center;
+margin-bottom:70px;
+}
+.hero-icon{
+font-size:90px;
+margin-bottom:20px;
+}
+.hero h1{
+font-size:52px;
+line-height:1.3;
+margin-bottom:15px;
+}
+.hero p{
+font-size:22px;
+color:#777;
+}
+
+.card{
+margin-bottom:35px;
+padding:40px;
+border-radius:35px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(20px);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+.card h2{
+font-size:30px;
+margin-bottom:20px;
+}
+.card p{
+font-size:17px;
+line-height:1.8;
+color:#444;
+}
+
+.action-buttons{
+display:flex;
+gap:15px;
+margin:20px 0 25px;
+flex-wrap:wrap;
+}
+.btn-download,
+.btn-view{
+display:inline-block;
+padding:12px 28px;
+border-radius:30px;
+text-decoration:none;
+font-size:15px;
+font-weight:500;
+transition:.3s;
+}
+.btn-download{
+background:#333;
+color:white !important;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+.btn-download:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 35px rgba(0,0,0,.2);
+background:#222;
+}
+.btn-view{
+background:rgba(255,255,255,0.8);
+color:#555 !important;
+border:1px solid rgba(0,0,0,.1);
+}
+.btn-view:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.pdf-preview{
+margin-top:20px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+background:white;
+border:1px solid rgba(0,0,0,.08);
+}
+.pdf-preview iframe{
+width:100%;
+height:600px;
+border:none;
+display:block;
+}
+
+.video-container{
+margin-top:20px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+background:#000;
+}
+.video-container video{
+width:100%;
+max-height:600px;
+display:block;
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:15px;
+}
+.tags span{
+padding:8px 20px;
+background:#FFE4F0;
+border-radius:25px;
+font-size:14px;
+color:#666;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:36px;}
+.hero p{font-size:18px;}
+.card{padding:30px 25px;}
+.card h2{font-size:24px;}
+.pdf-preview iframe{height:400px;}
+.action-buttons{flex-direction:column;}
+.action-buttons a{text-align:center;}
+}
+</style>
