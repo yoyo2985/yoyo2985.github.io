@@ -1,88 +1,98 @@
-<nav class="navbar">
+---
+import { ArrowUpRight, Check, ChevronDown, Languages, Menu, SunMoon, X } from "@lucide/astro";
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/", label: "首页", en: "Index" },
+  { href: "/research", label: "项目", en: "Work" },
+  { href: "/about", label: "关于", en: "About" },
+  { href: "/resume", label: "简历", en: "CV" },
+];
+const isActive = (href) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
 
-    <div class="logo">
-        🌱 Yoyo
+<header class="site-header" data-nav>
+  <a class="brand" href="/" aria-label="回到首页" transition:name="brand">
+    <span class="brand-mark">Y</span>
+    <span class="brand-copy"><strong>YOYO</strong><small>AI × ENGINEERING</small></span>
+  </a>
+  <nav class="desktop-nav" aria-label="主要导航">
+    {links.map((link) => (
+      <a href={link.href} class:list={{ active: isActive(link.href) }} aria-current={isActive(link.href) ? "page" : undefined}>
+        <span>{link.label}</span><small>{link.en}</small>
+      </a>
+    ))}
+  </nav>
+  <div class="preferences desktop-preferences" aria-label="显示偏好">
+    <div class="pref-menu" data-pref-menu>
+      <button class="pref-trigger" type="button" aria-label="主题" aria-expanded="false"><SunMoon size={15} /><span data-theme-label>系统</span><ChevronDown class="pref-chevron" size={13} /></button>
+      <div class="pref-popover" role="menu" aria-label="主题选项">
+        <button type="button" data-theme-option="system" role="menuitemradio"><span>跟随系统</span><Check size={14} /></button>
+        <button type="button" data-theme-option="light" role="menuitemradio"><span>日间</span><Check size={14} /></button>
+        <button type="button" data-theme-option="dark" role="menuitemradio"><span>夜间</span><Check size={14} /></button>
+      </div>
     </div>
-
-
-    <div class="links">
-
-        <a href="/">Home<span class="en">首页</span></a>
-
-        <a href="/about">
-            About<span class="en">关于</span>
-        </a>
-
-        <a href="/research">
-            Research<span class="en">研究</span>
-        </a>
-
+    <div class="pref-menu" data-pref-menu>
+      <button class="pref-trigger" type="button" aria-label="语言" aria-expanded="false"><Languages size={15} /><span data-language-label>中文</span><ChevronDown class="pref-chevron" size={13} /></button>
+      <div class="pref-popover" role="menu" aria-label="语言选项">
+        <button type="button" data-language-option="zh" role="menuitemradio"><span>中文</span><Check size={14} /></button>
+        <button type="button" data-language-option="en" role="menuitemradio"><span>English</span><Check size={14} /></button>
+      </div>
     </div>
+  </div>
+  <a class="github-link" href="https://github.com/yoyo2985" target="_blank" rel="noopener">
+    GitHub <ArrowUpRight size={15} strokeWidth={1.8} />
+  </a>
+  <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="mobile-nav">
+    <Menu class="menu-open" size={22} /><X class="menu-close" size={22} />
+  </button>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="移动端导航">
+    {links.map((link, index) => (
+      <a href={link.href} class:list={{ active: isActive(link.href) }}>
+        <span>0{index + 1}</span><strong>{link.label}</strong><small>{link.en}</small>
+      </a>
+    ))}
+    <div class="mobile-preferences">
+      <div class="pref-menu" data-pref-menu><button class="pref-trigger" type="button" aria-label="主题" aria-expanded="false"><SunMoon size={16} /><span data-theme-label>系统</span><ChevronDown class="pref-chevron" size={14} /></button><div class="pref-popover" role="menu" aria-label="主题选项"><button type="button" data-theme-option="system" role="menuitemradio"><span>跟随系统</span><Check size={14} /></button><button type="button" data-theme-option="light" role="menuitemradio"><span>日间</span><Check size={14} /></button><button type="button" data-theme-option="dark" role="menuitemradio"><span>夜间</span><Check size={14} /></button></div></div>
+      <div class="pref-menu" data-pref-menu><button class="pref-trigger" type="button" aria-label="语言" aria-expanded="false"><Languages size={16} /><span data-language-label>中文</span><ChevronDown class="pref-chevron" size={14} /></button><div class="pref-popover" role="menu" aria-label="语言选项"><button type="button" data-language-option="zh" role="menuitemradio"><span>中文</span><Check size={14} /></button><button type="button" data-language-option="en" role="menuitemradio"><span>English</span><Check size={14} /></button></div></div>
+    </div>
+  </nav>
+</header>
 
-</nav>
-
+<script is:inline>
+  const setupNav = () => {
+    const header = document.querySelector('[data-nav]');
+    const button = header?.querySelector('.menu-toggle');
+    const menu = header?.querySelector('.mobile-nav');
+    if (!header || !button || !menu || header.dataset.initialized === 'true') return;
+    header.dataset.initialized = 'true';
+    header.querySelectorAll('.pref-popover').forEach((popover) => { popover.hidden = true; });
+    const close = () => {
+      header.classList.remove('menu-is-open');
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', '打开导航菜单');
+    };
+    button.addEventListener('click', () => {
+      const next = !header.classList.contains('menu-is-open');
+      header.classList.toggle('menu-is-open', next);
+      button.setAttribute('aria-expanded', String(next));
+      button.setAttribute('aria-label', next ? '关闭导航菜单' : '打开导航菜单');
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+  };
+  setupNav();
+  document.addEventListener('astro:page-load', setupNav);
+</script>
 
 <style>
-
-.navbar{
-
-position:
-fixed;
-
-top:
-30px;
-
-left:
-60px;
-
-right:
-60px;
-
-
-display:
-flex;
-
-justify-content:
-space-between;
-
-align-items:center;
-
-
-padding:
-18px 30px;
-
-
-background:
-rgba(255,255,255,0.45);
-
-
-backdrop-filter:
-blur(20px);
-
-
-border-radius:
-30px;
-
-}
-
-
-.links{
-
-display:
-flex;
-
-gap:
-25px;
-
-}
-
-
-a{
-
-text-decoration:none;
-
-color:#555;
-
-}
-
+  .site-header{position:fixed;z-index:1000;top:18px;left:clamp(16px,3vw,48px);right:clamp(16px,3vw,48px);height:68px;padding:0 14px 0 12px;display:flex;align-items:center;gap:22px;border:1px solid rgba(201,255,95,.18);background:rgba(7,17,15,.78);box-shadow:0 18px 55px rgba(0,0,0,.24);backdrop-filter:blur(18px);border-radius:18px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;margin-right:auto}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--acid);color:#07110f;font-family:var(--display);font-weight:850;font-size:21px;transform:rotate(-4deg);transition:transform .3s var(--ease)}.brand:hover .brand-mark{transform:rotate(4deg) scale(1.06)}.brand-copy{display:flex;flex-direction:column;line-height:1}.brand-copy strong{font:700 15px/1 var(--display);letter-spacing:.09em}.brand-copy small{margin-top:5px;font:500 9px/1 var(--mono);color:var(--muted);letter-spacing:.08em}
+  .desktop-nav{display:flex;align-items:center;gap:4px}.desktop-nav a{position:relative;display:flex;align-items:baseline;gap:6px;padding:10px 13px;border-radius:10px;text-decoration:none;color:var(--muted);transition:.25s var(--ease)}.desktop-nav a span{font-size:14px}.desktop-nav a small{font:500 10px/1 var(--mono);opacity:.6;text-transform:uppercase}.desktop-nav a:hover,.desktop-nav a.active{color:var(--ink);background:rgba(255,255,255,.055)}.desktop-nav a.active::after{content:"";position:absolute;left:13px;right:13px;bottom:5px;height:1px;background:var(--acid);box-shadow:0 0 10px var(--acid)}
+  .preferences{display:flex;align-items:center;gap:5px}.preferences label{display:flex;align-items:center;gap:3px;height:36px;padding:0 4px 0 8px;border:1px solid var(--line);border-radius:9px;color:var(--muted)}.preferences select,.mobile-preferences select{border:0;background:transparent;color:var(--ink);font:600 10px/1 var(--mono);cursor:pointer;outline:0}.preferences select option,.mobile-preferences select option{background:var(--panel);color:var(--ink)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.github-link{display:flex;align-items:center;gap:5px;padding:10px 13px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none;font:600 12px/1 var(--mono);transition:.25s var(--ease)}.github-link:hover{border-color:var(--acid);color:var(--acid)}.menu-toggle,.mobile-nav,.mobile-preferences{display:none}
+  @media(max-width:1040px){.github-link{display:none}.desktop-nav a{padding-inline:9px}}
+  @media(max-width:820px){.site-header{top:10px;height:60px;left:10px;right:10px;border-radius:15px}.brand-mark{width:36px;height:36px}.brand-copy small{display:none}.desktop-nav,.desktop-preferences,.github-link{display:none}.menu-toggle{display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:11px;background:rgba(255,255,255,.06);color:var(--ink)}.menu-close{display:none}.menu-is-open .menu-open{display:none}.menu-is-open .menu-close{display:block}.mobile-nav{position:absolute;display:grid;left:0;right:0;top:68px;padding:10px;border:1px solid var(--line);border-radius:15px;background:var(--nav-bg);box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s var(--ease)}.menu-is-open .mobile-nav{opacity:1;visibility:visible;transform:none}.mobile-nav a{display:grid;grid-template-columns:32px 1fr auto;align-items:center;padding:15px 12px;border-radius:10px;color:var(--muted);text-decoration:none}.mobile-nav a:hover,.mobile-nav a.active{background:var(--hover);color:var(--ink)}.mobile-nav a>span,.mobile-nav a>small{font:500 10px/1 var(--mono);color:var(--acid)}.mobile-preferences{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 8px 2px;border-top:1px solid var(--line)}.mobile-preferences label{display:flex;flex-direction:column;gap:7px;padding:10px;border:1px solid var(--line);border-radius:10px}.mobile-preferences label>span{color:var(--muted);font:500 8px var(--mono);letter-spacing:.08em}.mobile-preferences select{width:100%;font-size:12px}}
+  .pref-menu{position:relative;color:var(--muted)}.pref-menu summary{display:flex;align-items:center;gap:7px;height:38px;padding:0 10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font:600 11px/1 var(--mono);cursor:pointer;list-style:none;transition:.2s var(--ease)}.pref-menu summary::-webkit-details-marker{display:none}.pref-menu summary:hover,.pref-menu[open] summary{border-color:rgba(201,255,95,.38);background:var(--hover)}.pref-chevron{transition:transform .2s var(--ease)}.pref-menu[open] .pref-chevron{transform:rotate(180deg)}.pref-popover{position:absolute;z-index:30;top:calc(100% + 9px);right:0;width:172px;padding:6px;border:1px solid var(--line);border-radius:12px;background:var(--surface-strong);box-shadow:var(--shadow);backdrop-filter:blur(18px)}.pref-popover button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 11px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;text-align:left}.pref-popover button:hover,.pref-popover button[aria-checked="true"]{background:var(--hover);color:var(--ink)}.pref-popover button svg{opacity:0;color:var(--acid)}.pref-popover button[aria-checked="true"] svg{opacity:1}
+  @media(max-width:820px){.mobile-preferences .pref-menu summary{height:44px;justify-content:center;font-size:12px}.mobile-preferences .pref-popover{position:static;width:100%;margin-top:6px;box-shadow:none}.mobile-preferences .pref-menu[open]{grid-column:1/-1}}
+  .pref-menu{flex:0 0 auto}.pref-menu summary{white-space:nowrap}.pref-menu summary::marker{content:""}
+  .pref-trigger{display:flex;align-items:center;gap:7px;height:38px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);font:600 11px/1 var(--mono);cursor:pointer;white-space:nowrap;transition:.2s var(--ease)}.pref-trigger:hover,.pref-menu.is-open .pref-trigger{border-color:rgba(201,255,95,.38);background:var(--hover)}.pref-menu:not(.is-open) .pref-popover{display:none}.pref-menu.is-open .pref-popover{display:block}.pref-menu.is-open .pref-chevron{transform:rotate(180deg)}
+  @media(max-width:820px){.mobile-preferences .pref-trigger{width:100%;height:44px;justify-content:center;font-size:12px}.mobile-preferences .pref-menu.is-open{grid-column:1/-1}}
 </style>

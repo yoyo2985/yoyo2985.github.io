@@ -1,38 +1,78 @@
 ---
-const { title = "Yoyo's Universe" } = Astro.props;
+import { ClientRouter } from "astro:transitions";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+const {
+  title = "Yoyo · AI × Engineering",
+  description = "Yoyo 的个人研究与工程作品集：医学影像 AI、深度学习与智能制造。",
+  hideChrome = false,
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>{title}</title>
-
-
-<!-- Google Analytics -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0M3RYJVHH0"></script>
-
-
-<script is:inline>
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-
-gtag('js', new Date());
-gtag('config', 'G-0M3RYJVHH0');
-
-</script>
-
-
-</head>
-
-<body>
-    <slot />
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07110f" />
+    <script is:inline>
+      (() => {
+        const mode = localStorage.getItem('yoyo-theme') || 'system';
+        const language = localStorage.getItem('yoyo-language') || 'zh';
+        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.themeMode = mode;
+        document.documentElement.dataset.theme = mode === 'system' ? (dark ? 'dark' : 'light') : mode;
+        document.documentElement.dataset.language = language;
+        document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <ClientRouter />
+    <script is:inline src="/preferences.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M3RYJVHH0"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-0M3RYJVHH0');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
+    {!hideChrome && <Navbar />}
+    <main id="main-content" transition:animate="fade"><slot /></main>
+    {!hideChrome && <Footer />}
+    <script is:inline>
+      const setupPage = () => {
+        const progress = document.querySelector('.page-progress span');
+        const updateProgress = () => {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          if (progress) progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+        };
+        updateProgress();
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        const targets = document.querySelectorAll('[data-reveal]');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          targets.forEach((item) => item.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        targets.forEach((item) => observer.observe(item));
+      };
+      document.addEventListener('astro:page-load', setupPage);
+    </script>
+  </body>
 </html>
