@@ -1,10 +1,11 @@
 ---
-import { ArrowRight, ChartNoAxesCombined, Cog, ScanSearch } from "@lucide/astro";
+import { ArrowRight, ChartNoAxesCombined, CircuitBoard, Cog, ScanSearch } from "@lucide/astro";
 const projects = [
   { href:"/projects/lung-cancer-lm-prediction", index:"01", type:"MEDICAL AI", title:"肺癌脑膜转移预测", en:"MRI-based LM Prediction", desc:"融合 MRI 影像、Transformer 与可解释 AI 的临床预测系统。", tags:["MRI","Transformer","Multimodal"], Icon:ScanSearch, tone:"acid" },
   { href:"/projects/lstm-aero-engine-rul", index:"02", type:"DEEP LEARNING", title:"航空发动机剩余寿命预测", en:"Aero-engine RUL Prediction", desc:"基于 NASA C-MAPSS 数据集的时序退化建模与寿命预测。", tags:["LSTM","Attention","Time Series"], Icon:ChartNoAxesCombined, tone:"cyan" },
   { href:"/projects/gearbox-design", index:"03", type:"MECHANICAL DESIGN", title:"减速箱系统设计", en:"Gearbox System Design", desc:"从参数计算、结构设计到工程图与装配动画的完整工程闭环。", tags:["SolidWorks","CAD","Mechanics"], Icon:Cog, tone:"orange" },
-  { href:"/research", index:"04", type:"PROJECT INDEX", title:"浏览全部", en:"Explore all projects", desc:"6 个项目 · 3 个方向", tags:[], Icon:null, tone:"muted" },
+  { href:"/projects/electronic-circuit", index:"04", type:"FPGA & ROBOTICS", title:"FPGA 语音机器人控制", en:"FPGA Voice Robot Control", desc:"从语音感知、身份验证到闭环运动控制与 Web 数字孪生。", tags:["Verilog","FPGA","Digital Twin"], Icon:CircuitBoard, tone:"cyan" },
+  { href:"/research", index:"05", type:"PROJECT INDEX", title:"浏览全部", en:"Explore all projects", desc:"7 个项目 · 3 个方向", tags:[], Icon:null, tone:"muted" },
 ];
 ---
 <section class="work section-shell" id="selected-work">

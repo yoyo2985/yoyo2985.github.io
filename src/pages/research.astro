@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { ArrowUpRight, BrainCircuit, ChartNoAxesCombined, Cog, Leaf, Printer, Sigma } from "@lucide/astro";
+import { ArrowUpRight, BrainCircuit, ChartNoAxesCombined, CircuitBoard, Cog, Leaf, Printer, Sigma } from "@lucide/astro";
 const projects = [
   {href:"/projects/lung-cancer-lm-prediction",category:"ai",number:"01",year:"2026",title:"肺癌脑膜转移预测",en:"MRI-based LM Prediction",desc:"以头部 MRI 为核心，探索 CNN、Transformer 与多模态信息融合的临床预测系统。",role:"项目负责人",result:"国家级项目 · 金奖",tags:["MRI","PyTorch","Transformer"],Icon:BrainCircuit},
   {href:"/projects/lstm-aero-engine-rul",category:"ai",number:"02",year:"2025",title:"航空发动机剩余寿命预测",en:"Aero-engine RUL Prediction",desc:"面向复杂退化序列，以 LSTM 和注意力机制构建可验证的剩余寿命预测框架。",role:"第一主持人",result:"国豪论坛汇报",tags:["LSTM","C-MAPSS","Time Series"],Icon:ChartNoAxesCombined},
@@ -8,6 +8,7 @@ const projects = [
   {href:"/projects/gearbox-design",category:"engineering",number:"04",year:"2026",title:"减速箱系统设计",en:"Gearbox System Design",desc:"覆盖设计计算、三维结构、二维工程图和装配演示的机械设计完整闭环。",role:"独立设计",result:"课程项目",tags:["SolidWorks","CAD","Mechanics"],Icon:Cog},
   {href:"/projects/smart-veggie-packaging",category:"engineering",number:"05",year:"2025",title:"叶菜洁净包装一体机",en:"Smart Veggie Packaging",desc:"围绕清洗、沥干、包装三道工序，完成自动化设备的结构与传动设计。",role:"机械设计",result:"上海市二等奖",tags:["Prototyping","Transmission","Food Safety"],Icon:Leaf},
   {href:"/projects/shuweibei-mathmodel",category:"modeling",number:"06",year:"2026",title:"数维杯数学建模",en:"Shuwei Cup Modeling",desc:"从问题假设、数据分析、优化算法到论文表达的高强度协作实践。",role:"建模与编程",result:"竞赛项目",tags:["Python","MATLAB","Optimization"],Icon:Sigma},
+  {href:"/projects/electronic-circuit",category:"engineering",number:"07",year:"2026",title:"FPGA 语音机器人闭环控制",en:"FPGA Voice Robot & Digital Twin",desc:"在 EG4S20 上串联语音感知、声纹验证、指令决策与 PID 运动控制，并通过 Web 数字孪生观察执行反馈。",role:"项目开发",result:"板上链路验证",tags:["Verilog","FPGA","Digital Twin"],Icon:CircuitBoard},
 ];
 ---
 <MainLayout title="研究项目 · Yoyo" description="Yoyo 的研究与工程项目索引，涵盖医学 AI、深度学习、智能制造与机械设计。">
@@ -19,9 +20,9 @@ const projects = [
   <section class="archive section-shell">
     <div class="archive-tools" data-project-filters>
       <div class="filters" role="group" aria-label="项目分类筛选">
-        <button class="active" data-filter="all">全部 <span>06</span></button>
+        <button class="active" data-filter="all">全部 <span>07</span></button>
         <button data-filter="ai">AI 研究 <span>03</span></button>
-        <button data-filter="engineering">机械工程 <span>02</span></button>
+        <button data-filter="engineering">工程设计 <span>03</span></button>
         <button data-filter="modeling">建模 <span>01</span></button>
       </div>
       <span class="archive-note">SELECT A PROJECT TO OPEN CASE STUDY</span>
