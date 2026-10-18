@@ -8,6 +8,12 @@ import { ArrowUpRight } from "@lucide/astro";
   <Hero />
   <Universe />
 
+  <section class="smed-feature section-shell" data-reveal>
+    <div><span class="eyebrow">OPEN-SOURCE TOOL / SMART MANUFACTURING</span><h2>把换型改善，<br />连接到生产计划。</h2><p>我主要负责机床 SMED，将准备作业、首件放行与人员资源整理为可执行的改善安排，并用交互仿真比较在制释放和准备支持方式。</p><small>公开演示使用完全合成数据，保留方法与功能；现场效果仍需测时与质量验证。</small></div>
+    <div class="smed-links"><a href="/smed/index.html" data-astro-reload>打开 SMED 工作台 <ArrowUpRight size={18} /></a><a href="/projects/smed-workbench">查看项目过程 <ArrowUpRight size={18} /></a><a href="https://github.com/yoyo2985/smed-workbench" target="_blank" rel="noopener noreferrer">GitHub 开源仓库 <ArrowUpRight size={18} /></a></div>
+  </section>
+
+
   <section class="proof section-shell" data-reveal>
     <div class="proof-copy"><span class="eyebrow">CURRENT SNAPSHOT</span><h2>一些阶段性的记录。</h2><p>包括课程、比赛和项目。以后有新的进展，我也会继续补在这里。</p></div>
     <dl>
@@ -30,6 +36,9 @@ import { ArrowUpRight } from "@lucide/astro";
 </MainLayout>
 
 <style>
+
+  .smed-feature{display:grid;grid-template-columns:1.4fr .7fr;gap:60px;align-items:center;padding-top:65px;padding-bottom:65px;border-top:1px solid var(--line)}.smed-feature h2{font:740 clamp(32px,4.5vw,60px)/1.08 var(--display);letter-spacing:-.045em;margin:15px 0 22px}.smed-feature p{max-width:730px;color:var(--muted);font-size:16px;line-height:1.8}.smed-feature small{display:block;max-width:720px;color:var(--muted);font-size:12px}.smed-links{display:flex;flex-direction:column;gap:12px}.smed-links a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 20px;border:1px solid var(--line);border-radius:10px;color:var(--acid);text-decoration:none}.smed-links a:first-child{background:var(--acid);color:var(--bg)}.smed-links a:hover{transform:translateY(-2px)}@media(max-width:760px){.smed-feature{grid-template-columns:1fr;gap:25px;padding-top:45px;padding-bottom:45px}}
+
   .proof{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;padding-top:110px;padding-bottom:110px;border-top:1px solid var(--line)}.proof-copy h2{margin:10px 0 20px;font:740 clamp(38px,5vw,68px)/1 var(--display);letter-spacing:-.055em}.proof-copy p{max-width:480px;color:var(--muted)}.proof dl{margin:0;display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.proof dl div{min-height:170px;padding:22px;display:flex;flex-direction:column;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.proof dt{color:var(--acid);font:720 clamp(35px,4vw,58px)/1 var(--display);letter-spacing:-.05em}.proof dd{margin:auto 0 0;font-size:15px}.proof dl span{color:var(--muted);font:500 10px/1.5 var(--mono)}.path{position:relative;display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;min-height:560px;padding-top:95px;padding-bottom:95px;border-top:1px solid var(--line);overflow:hidden}.path::after{content:"Y";position:absolute;right:-.04em;bottom:-.3em;color:rgba(201,255,95,.035);font:900 600px/1 var(--display);pointer-events:none}.path-index{font:500 10px/1.3 var(--mono);color:var(--muted);letter-spacing:.12em}.path-copy{position:relative;z-index:1}.path h2{margin:16px 0 28px;font:760 clamp(45px,7vw,92px)/.92 var(--display);letter-spacing:-.065em}.path p{max-width:700px;margin:0;color:var(--muted);font-size:18px;line-height:1.8}.path a{display:inline-flex;align-items:center;gap:8px;margin-top:30px;color:var(--acid);text-decoration:none;font-weight:650}.path a:hover{gap:13px}
   @media(max-width:800px){.proof,.path{grid-template-columns:1fr;gap:35px;padding-top:75px;padding-bottom:75px}.proof dl div{min-height:140px}.path{min-height:auto}.path-index{display:none}}@media(max-width:480px){.proof dl{grid-template-columns:1fr 1fr}.proof dl div{padding:16px}.proof dt{font-size:36px}.proof dd{font-size:13px}}
 </style>
