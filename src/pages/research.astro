@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import { ArrowUpRight, BrainCircuit, ChartNoAxesCombined, CircuitBoard, Cog, Leaf, Printer, Sigma } from "@lucide/astro";
 const projects = [
+  {href:"/projects/turning-geometry",category:"engineering",number:"09",year:"2026",title:"刀具几何实验室",en:"Cutting Geometry Lab",desc:"用参数化三维模型展示刀具角度、切削刃与参考平面的关系，支持标准剖面观察和离线教学。",role:"几何建模与交互开发",result:"课程交互演示",tags:["Blender","Three.js","Manufacturing"],Icon:Cog},
   {href:"/projects/lung-cancer-lm-prediction",category:"ai",number:"01",year:"2026",title:"肺癌脑膜转移预测",en:"MRI-based LM Prediction",desc:"以头部 MRI 为核心，探索 CNN、Transformer 与多模态信息融合的临床预测系统。",role:"项目负责人",result:"国家级项目 · 金奖",tags:["MRI","PyTorch","Transformer"],Icon:BrainCircuit},
   {href:"/projects/lstm-aero-engine-rul",category:"ai",number:"02",year:"2025",title:"航空发动机剩余寿命预测",en:"Aero-engine RUL Prediction",desc:"面向复杂退化序列，以 LSTM 和注意力机制构建可验证的剩余寿命预测框架。",role:"第一主持人",result:"国豪论坛汇报",tags:["LSTM","C-MAPSS","Time Series"],Icon:ChartNoAxesCombined},
   {href:"/projects/3d-printing-ml",category:"ai",number:"03",year:"2025",title:"3D 打印质量与参数优化",en:"ML for Additive Manufacturing",desc:"把物理信息与机器学习带入增材制造质量控制，连接参数、过程与成型结果。",role:"核心成员",result:"上海市创新项目",tags:["PINN","ML","Additive Manufacturing"],Icon:Printer},
@@ -21,9 +22,9 @@ const projects = [
   <section class="archive section-shell">
     <div class="archive-tools" data-project-filters>
       <div class="filters" role="group" aria-label="项目分类筛选">
-        <button class="active" data-filter="all">全部 <span>08</span></button>
+        <button class="active" data-filter="all">全部 <span>09</span></button>
         <button data-filter="ai">AI 研究 <span>03</span></button>
-        <button data-filter="engineering">工程设计 <span>04</span></button>
+        <button data-filter="engineering">工程设计 <span>05</span></button>
         <button data-filter="modeling">建模 <span>01</span></button>
       </div>
       <span class="archive-note">SELECT A PROJECT TO OPEN CASE STUDY</span>
