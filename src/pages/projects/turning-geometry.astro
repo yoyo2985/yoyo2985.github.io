@@ -4,7 +4,7 @@ import { ArrowUpRight, Cog } from "@lucide/astro";
 const topics = [
   ["01 / SURFACES", "先看面与刃", "通过颜色区分前刀面、主后刀面和副后刀面，观察它们如何相交形成主、副切削刃。"],
   ["02 / REFERENCE", "对照平面、方向与受力", "切换参考平面和工件转向，独立显示运动、三分力与合力；文字沿三维箭头排列，随视角透视、缩放。"],
-  ["03 / PARAMETERS", "让角度与知识联动", "按课件输入材料与切削用量，计算基准工况三分力；角度说明解释受力影响，缺少修正时明确停止输出。"],
+  ["03 / PARAMETERS", "让角度与知识联动", "默认载入课件参考工况，只用箭头长度观察受力；调参实时变化，参考计算与趋势示意分别标明。"],
   ["04 / TAKEAWAY", "把观察带走", "导出参数、当前网格和标注图片；离线版可双击打开，模型可回到 Blender 继续编辑。"],
 ];
 ---
@@ -22,7 +22,7 @@ const topics = [
     <section><span class="eyebrow">EXPLORE THE GEOMETRY</span><h2>在正确的平面里，理解角度。</h2><div class="topics">{topics.map(([n,title,desc]) => <article><small>{n}</small><h3>{title}</h3><p>{desc}</p></article>)}</div></section>
     <section class="preview"><span class="eyebrow">LIVE INTERACTIVE MODEL</span><h2>试着改变一个参数。</h2><p>拖动旋转，滚轮缩放；点击角度名称查看定义。下方演示与完整页面使用同一份模型。</p><iframe src="/turning-lab/index.html" title="刀具几何实验室交互演示" loading="lazy" allow="fullscreen"></iframe><a class="full" href="/turning-lab/index.html" data-astro-reload>全屏打开实验室 <ArrowUpRight size={16} /></a></section>
     <section><span class="eyebrow">MODEL & VALIDATION</span><h2>几何关系可以检查，也可以复现。</h2><p>刀具由参数化平面交集构建。网页和 Blender 共用顶点、面和参数快照；角度数值来自显式几何关系。前角、后角与楔角满足 γₒ + αₒ + βₒ = 90°，主偏角、副偏角与刀尖角满足 κᵣ + κᵣ′ + εᵣ = 180°。</p><p>验证覆盖 324 组角度组合：有效组合检查真实刃线、截面、闭合拓扑与法向；导致刀体被切穿的尺寸组合会被拒绝。AI 用于辅助几何推导、编码与检查，未用训练模型预测切削结果。</p></section>
-    <section><span class="eyebrow">SCOPE</span><h2>当前版本的边界。</h2><p>模型采用平直刀面、理想尖刃和固定 8° 副后角，显示刀具静止参考系中的角度。刃倾角以课件 2.1 第 24 页为准，刀尖为最高点时记正。工件可正反转、暂停；转向从 +X 看向 −X 定义。工件仍为空间和转向示意，反向实际加工需匹配刀具左右手性与安装。</p><p>依据课件 2.2 第 22、24、25 页，列出三分力公式并用材料系数执行 Kienzle 经验计算，输出 N、功率、转矩和当前代入。角度、速度等偏离参考条件且缺少修正时不输出力值；右侧逐个角度解释受力影响。未获得实测数据，不能声称预测精度通过验证，也未模拟真实接触或材料去除；课件原 PDF 和原图未随网页分发。</p><p>下载离线版后直接双击 HTML 即可运行核心交互，不需要安装 Node.js、Python 或 Blender。Blender 源工程可在实验室的“导出”中下载。</p></section>
+    <section><span class="eyebrow">SCOPE</span><h2>当前版本的边界。</h2><p>模型采用平直刀面、理想尖刃和固定 8° 副后角，显示刀具静止参考系中的角度。刃倾角以课件 2.1 第 24 页为准，刀尖为最高点时记正。工件可正反转、暂停；转向从 +X 看向 −X 定义。工件仍为空间和转向示意，反向实际加工需匹配刀具左右手性与安装。</p><p>依据课件 2.2 第 22、24、25 页，内部计算参考工况；页面默认载入并隐藏具体力值，仅以固定尺度的箭头长度展示变化。前角、主偏角超出参考条件时使用明确标注的连续趋势图，不能据此读取精确力比；未量化的角度不虚构系数。右侧逐个角度解释受力影响，公式保留在说明中。未获得实测数据，不能声称预测精度通过验证，也未模拟真实接触或材料去除；课件原 PDF 和原图未随网页分发。</p><p>下载离线版后直接双击 HTML 即可运行核心交互，不需要安装 Node.js、Python 或 Blender。Blender 源工程可在实验室的“导出”中下载。</p></section>
   </article>
 </MainLayout>
 <style>
